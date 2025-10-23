@@ -1,21 +1,8 @@
-CXX = g++
-CXXFLAGS = -Wall -Iinclude
-LDFLAGS = -lncurses
+all:
+	g++ src/main.cpp src/Game.cpp src/Snake.cpp src/Apple.cpp -Iinclude -std=c++17 -Wall -o snake.exe
 
-SRC = src/main.cpp src/game.cpp src/snake.cpp src/apple.cpp
-OBJ_DIR = obj
-OBJ = $(SRC:src/%.cpp=$(OBJ_DIR)/%.o)
-
-all: $(OBJ_DIR) snake
-
-snake: $(OBJ)
-	$(CXX) $(OBJ) $(CXXFLAGS) $(LDFLAGS) -o snake
-
-$(OBJ_DIR)/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-$(OBJ_DIR):
-	mkdir $(OBJ_DIR)
+run: all
+	./snake.exe
 
 clean:
-	rm -rf $(OBJ_DIR) snake
+	-del snake.exe 2>nul || rm -f snake.exe

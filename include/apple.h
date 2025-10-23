@@ -14,7 +14,6 @@ public:
         return this->x == x && this->y == y;
     }
 
-
     int getX() const;
     int getY() const;
 };

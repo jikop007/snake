@@ -1,30 +1,26 @@
 #pragma once
-#include "snake.h"
-#include "apple.h"
+#include "Snake.h"
+#include "Apple.h"
 #include <thread>
 #include <atomic>
-
-using namespace std;
 
 class Game {
 private:
     int width, height;
     int score;
-
     bool gameOver;
-    atomic<bool> running;
-    
+    std::atomic<bool> running;
+
     Snake snake;
     Apple apple;
 
-    thread inputThread;
+    std::thread inputThread;
 
     void draw();
-    void input();
     void logic();
+    void inputLoop();
 
 public:
     Game(int w, int h);
-
     void run();
 };

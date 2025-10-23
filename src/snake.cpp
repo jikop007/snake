@@ -1,36 +1,33 @@
-#include <cmath>
-#include "snake.h"
-
-using namespace std;
+#include "Snake.h"
 
 Snake::Snake(int startX, int startY)
-    : dir(Direction::stop)
+    : dir(Direction::STOP)
 {
     for (int i = 0; i < 5; ++i)
         body.push_back({ startX - i, startY });
 }
 
 void Snake::setDirection(Direction d) {
-    if ((dir == Direction::up && d == Direction::down) ||
-        (dir == Direction::down && d == Direction::up) ||
-        (dir == Direction::left && d == Direction::right) ||
-        (dir == Direction::right && d == Direction::left))
+    if ((dir == Direction::UP && d == Direction::DOWN) ||
+        (dir == Direction::DOWN && d == Direction::UP) ||
+        (dir == Direction::LEFT && d == Direction::RIGHT) ||
+        (dir == Direction::RIGHT && d == Direction::LEFT))
         return;
 
     dir = d;
 }
 
 void Snake::move() {
-    if (dir == Direction::stop) return;
+    if (dir == Direction::STOP) return;
 
     int x = body.front().first;
     int y = body.front().second;
 
     switch (dir) {
-        case Direction::up:    y--; break;
-        case Direction::down:  y++; break;
-        case Direction::left:  x--; break;
-        case Direction::right: x++; break;
+        case Direction::UP:    y--; break;
+        case Direction::DOWN:  y++; break;
+        case Direction::LEFT:  x--; break;
+        case Direction::RIGHT: x++; break;
         default: break;
     }
 

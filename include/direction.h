@@ -1,9 +1,9 @@
 #pragma once
 
 enum class Direction {
-    stop,
-    up,
-    down,
-    left,
-    right
+    STOP,
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
 };
